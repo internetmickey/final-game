@@ -10,6 +10,7 @@ public class EnemyCOntroller : MonoBehaviour
     public Rigidbody2D enemyRb;
 
     public float speed = 10f;
+
     
 
     // Start is called before the first frame update
@@ -34,6 +35,7 @@ public class EnemyCOntroller : MonoBehaviour
         if (other.gameObject.CompareTag("Wall"))
         {
             Destroy(gameObject);
+            
         }
     }
 }
