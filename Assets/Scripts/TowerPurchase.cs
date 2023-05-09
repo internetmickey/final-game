@@ -15,7 +15,7 @@ public class TowerPurchase : MonoBehaviour
 
     void Start()
     {
-        scoreTracker = GameObject.FindAnyObjectByType<ScoreTracker>();
+        scoreTracker = GameObject.FindObjectOfType<ScoreTracker>();
         
     }
 

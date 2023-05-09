@@ -5,7 +5,10 @@ public class FollowThePath : MonoBehaviour
 {
 
     // Array of waypoints to walk from one to the next one
-    [SerializeField]
+    
+    GameObject waypointContainer;
+
+
     Transform[] waypoints;
 
     // Walk speed that can be set in Inspector
@@ -19,6 +22,12 @@ public class FollowThePath : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
+        waypointContainer = GameObject.Find("Points");
+        waypoints = new Transform[waypointContainer.transform.childCount];
+        for (int i = 0; i < waypointContainer.transform.childCount; i++)
+        {
+            waypoints[i] = waypointContainer.transform.GetChild(i).transform;
+        }
 
         // Set position of Enemy as position of the first waypoint
         transform.position = waypoints[waypointIndex].transform.position;
@@ -42,7 +51,7 @@ public class FollowThePath : MonoBehaviour
 
             // Move Enemy from current waypoint to the next one
             // using MoveTowards method
-            transform.position = Vector2.MoveTowards(transform.position,
+            transform.position = Vector3.MoveTowards(transform.position,
                waypoints[waypointIndex].transform.position,
                moveSpeed * Time.deltaTime);
 

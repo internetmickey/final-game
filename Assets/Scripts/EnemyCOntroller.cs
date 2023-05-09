@@ -11,12 +11,15 @@ public class EnemyCOntroller : MonoBehaviour
 
     public float speed = 10f;
 
-    
+    public int health = 25;
+
+    [SerializeField] private ScoreTracker scoreTracker;
 
     // Start is called before the first frame update
     void Start()
     {
         enemyRb = GetComponent<Rigidbody2D>();
+        scoreTracker = GameObject.FindObjectOfType<ScoreTracker>();
     }
 
     // Update is called once per frame
@@ -28,6 +31,12 @@ public class EnemyCOntroller : MonoBehaviour
     private void FixedUpdate()
     {
         transform.Translate(Vector2.left * Time.deltaTime * speed);
+
+        if (health < 0)
+        {
+            Destroy(gameObject);
+            scoreTracker.AddScore();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -36,6 +45,11 @@ public class EnemyCOntroller : MonoBehaviour
         {
             Destroy(gameObject);
             
+        }
+
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            health -= 5;
         }
     }
 }
