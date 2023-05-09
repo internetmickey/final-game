@@ -31,7 +31,7 @@ public class EnemyCOntroller : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Translate(Vector2.left * Time.deltaTime * speed);
+        
         
         if (health <= 0)
         {
