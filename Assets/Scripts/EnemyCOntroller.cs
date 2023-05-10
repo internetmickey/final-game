@@ -9,9 +9,9 @@ public class EnemyCOntroller : MonoBehaviour
 {
     public Rigidbody2D enemyRb;
 
-    public float speed = 10f;
+    [SerializeField] float speed = 10f;
 
-    public int health = 25;
+    [SerializeField] public int health = 25;
 
     [SerializeField] private ScoreTracker scoreTracker;
 

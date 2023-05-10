@@ -22,7 +22,7 @@ public class FollowThePath : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        waypointContainer = GameObject.Find("Points");
+        waypointContainer = GameObject.Find("Slither Points");
         waypoints = new Transform[waypointContainer.transform.childCount];
         for (int i = 0; i < waypointContainer.transform.childCount; i++)
         {
