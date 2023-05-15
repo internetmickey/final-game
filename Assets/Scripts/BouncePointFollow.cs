@@ -1,11 +1,11 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowThePath : MonoBehaviour
+public class BouncePointFollow : MonoBehaviour
 {
-
     // Array of waypoints to walk from one to the next one
-    
+
     [SerializeField] GameObject waypointContainer;
 
 
@@ -22,7 +22,7 @@ public class FollowThePath : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        waypointContainer = GameObject.Find("Slither Points");
+        waypointContainer = GameObject.Find("Bounce Points");
         waypoints = new Transform[waypointContainer.transform.childCount];
         for (int i = 0; i < waypointContainer.transform.childCount; i++)
         {
@@ -65,4 +65,3 @@ public class FollowThePath : MonoBehaviour
         }
     }
 }
-

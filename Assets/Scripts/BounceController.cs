@@ -1,11 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-
-public class EnemyCOntroller : MonoBehaviour
+public class BounceController : MonoBehaviour
 {
     [SerializeField] public Rigidbody2D enemyRb;
 
@@ -25,7 +22,7 @@ public class EnemyCOntroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
@@ -44,7 +41,7 @@ public class EnemyCOntroller : MonoBehaviour
         if (other.gameObject.CompareTag("Wall"))
         {
             Destroy(gameObject);
-            
+
         }
 
         if (other.gameObject.CompareTag("Bullet"))

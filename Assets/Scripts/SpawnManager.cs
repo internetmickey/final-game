@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject bouncerPrefab;
+    public GameObject brutePrefab;
+    public GameObject gruntPrefab;
 
     private float spawnRangeY = 5f;
     private float spawnPosX = 13f;
@@ -19,10 +21,15 @@ public class SpawnManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
-
-            
-            SpawnEnemy();
-            
+            SpawnEnemyBouncer();
+        }
+        if(Input.GetKeyDown(KeyCode.D)) 
+        { 
+            SpawnEnemyBrute();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SpawnEnemyGrunt();
         }
     }
 
@@ -34,9 +41,21 @@ public class SpawnManager : MonoBehaviour
 
    
 
-    private void SpawnEnemy()
+    private void SpawnEnemyBouncer()
     {
-        Vector2 spawnpos = new Vector2(spawnPosX, Random.Range(-spawnRangeY, spawnRangeY));
-        Instantiate(enemyPrefab, spawnpos, enemyPrefab.transform.rotation);
+        Vector2 spawnpos = new Vector2(spawnPosX, spawnRangeY);
+        Instantiate(bouncerPrefab, spawnpos, bouncerPrefab.transform.rotation);
+    }
+
+    private void SpawnEnemyBrute()
+    {
+        Vector2 spawnpos = new Vector2(spawnPosX, spawnRangeY);
+        Instantiate(brutePrefab, spawnpos, brutePrefab.transform.rotation);
+    }
+
+    private void SpawnEnemyGrunt()
+    {
+        Vector2 spawnpos = new Vector2(spawnPosX, spawnRangeY);
+        Instantiate(gruntPrefab, spawnpos, gruntPrefab.transform.rotation);
     }
 }
