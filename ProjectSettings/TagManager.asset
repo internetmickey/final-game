@@ -7,6 +7,7 @@ TagManager:
   - Wall
   - Enemy
   - Bullet
+  - Wave Manager
   layers:
   - Default
   - TransparentFX

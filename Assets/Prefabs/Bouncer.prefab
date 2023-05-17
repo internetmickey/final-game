@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8344911462707874660}
   - component: {fileID: 840499260940766483}
-  - component: {fileID: 5063119317020896455}
   - component: {fileID: -2548706579164941687}
   - component: {fileID: 2752540829763924369}
+  - component: {fileID: 4180841479833791149}
   m_Layer: 6
   m_Name: Bouncer
   m_TagString: Enemy
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.8433223, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e7908924d3febb847a45237ba546a8c1, type: 3}
+  m_Color: {r: 1, g: 0.8632076, b: 0.9893522, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -87,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5063119317020896455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7466561190572853305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b94b9f2b1ef39ad4faf83c0abc04bc4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyRb: {fileID: 0}
-  speed: 0
-  health: 10
-  scoreTracker: {fileID: 0}
 --- !u!61 &-2548706579164941687
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -120,7 +104,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.8828125}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 0.8828125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -143,4 +127,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypointContainer: {fileID: 0}
   waypoints: []
-  moveSpeed: 10
+  moveSpeed: 15
+--- !u!114 &4180841479833791149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466561190572853305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d322cf7609c0b419e10739f399a1de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyRb: {fileID: 0}
+  speed: 10
+  health: 25
+  scoreTracker: {fileID: 0}
+  damage: 5
+  player: {fileID: 0}

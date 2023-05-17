@@ -7,6 +7,9 @@ public class ScoreTracker : MonoBehaviour
 {
     public int playerScore = 0;
     public TextMeshProUGUI scoreText;
+    public int bruteScore = 25;
+    public int gruntScore = 10;
+    public int bouncerScore = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +26,25 @@ public class ScoreTracker : MonoBehaviour
         }
     }
 
-    public void AddScore()
+    public void AddScoreBouncer()
     {
-        playerScore += 5;
-        Debug.Log("WORKING");
+        playerScore += bouncerScore;
+        
+        scoreText.text = "Score: " + playerScore;
+    }
+    public void AddScoreGrunt()
+    {
+        playerScore += gruntScore;
+        
         scoreText.text = "Score: " + playerScore;
     }
 
-     
+    public void AddScoreBrute()
+    {
+        playerScore += bruteScore;
+        
+        scoreText.text = "Score: " + playerScore;
+    }
+
+
 }

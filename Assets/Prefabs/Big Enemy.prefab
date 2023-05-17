@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8925976024304260092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.8, y: 0.05, z: 0}
+  m_LocalPosition: {x: 13.95, y: -1.1561, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 73872fe38fd044940bfc54f027b0b6a9, type: 3}
   m_Color: {r: 0.9056604, g: 0.8311304, b: 0.13243146, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,9 +100,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.035648584, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.81065106
 --- !u!114 &8925976024304260090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +119,8 @@ MonoBehaviour:
   speed: 0
   health: 300
   scoreTracker: {fileID: 0}
+  damage: 20
+  player: {fileID: 0}
 --- !u!114 &-4015733575650029664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,4 +135,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypointContainer: {fileID: 0}
   waypoints: []
-  moveSpeed: 0.8
+  moveSpeed: 1

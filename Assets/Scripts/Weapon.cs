@@ -10,12 +10,20 @@ public class Weapon : MonoBehaviour
 
     public float fireForce;
 
+    
+
+    private void Start()
+    {
+        
+    }
     public void Fire()
     {
         GameObject projectile = Instantiate(bullet, firePoint.position, firePoint.rotation);
         projectile.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
 
-        Destroy(projectile, 3.0f);
+        Destroy(projectile, 2.0f);
+       
+
     }
 
 

@@ -12,11 +12,16 @@ public class BounceController : MonoBehaviour
 
     [SerializeField] private ScoreTracker scoreTracker;
 
+    [SerializeField] public float damage = 5f;
+
+    public PlayerController player;
+
     // Start is called before the first frame update
     void Start()
     {
         enemyRb = GetComponent<Rigidbody2D>();
         scoreTracker = GameObject.FindObjectOfType<ScoreTracker>();
+        player = GameObject.FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -27,12 +32,14 @@ public class BounceController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Translate(Vector2.left * Time.deltaTime * speed);
+        
 
         if (health < 0)
         {
+            
             Destroy(gameObject);
-            scoreTracker.AddScore();
+            scoreTracker.AddScoreBouncer();
+            GameObject.FindGameObjectWithTag("Wave Manager").GetComponent<WaveSpawner>().spawnedEnemies.Remove(gameObject);
         }
     }
 
@@ -40,13 +47,18 @@ public class BounceController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Wall"))
         {
+            
             Destroy(gameObject);
+            GameObject.FindGameObjectWithTag("Wave Manager").GetComponent<WaveSpawner>().spawnedEnemies.Remove(gameObject);
+            player.currentHealth -= damage;
 
         }
 
         if (other.gameObject.CompareTag("Bullet"))
         {
-            health -= 5;
+            health -= 4;
         }
     }
+
+    
 }

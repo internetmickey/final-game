@@ -15,11 +15,16 @@ public class BruteController : MonoBehaviour
 
     [SerializeField] private ScoreTracker scoreTracker;
 
+    [SerializeField] public float damage = 20f;
+
+    public PlayerController player;
+
     // Start is called before the first frame update
     void Start()
     {
         enemyRb = GetComponent<Rigidbody2D>();
         scoreTracker = GameObject.FindObjectOfType<ScoreTracker>();
+        player = GameObject.FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -34,8 +39,10 @@ public class BruteController : MonoBehaviour
 
         if (health < 0)
         {
+            
             Destroy(gameObject);
-            scoreTracker.AddScore();
+            scoreTracker.AddScoreBrute();
+            GameObject.FindGameObjectWithTag("Wave Manager").GetComponent<WaveSpawner>().spawnedEnemies.Remove(gameObject);
         }
     }
 
@@ -43,13 +50,17 @@ public class BruteController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Wall"))
         {
+            
             Destroy(gameObject);
-
+            GameObject.FindGameObjectWithTag("Wave Manager").GetComponent<WaveSpawner>().spawnedEnemies.Remove(gameObject);
+            player.currentHealth -= damage;
         }
 
         if (other.gameObject.CompareTag("Bullet"))
         {
-            health -= 5;
+            health -= 4;
         }
     }
+
+   
 }

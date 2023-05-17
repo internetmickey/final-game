@@ -2,19 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public Camera sceneCamera;
 
     public Weapon weapon;
 
+    public ScoreTracker scoreTracker;
+
     public float moveSpeed = 10.0f;
     public Rigidbody2D playerRb;
+    public float maxHealth = 1000;
+    public float currentHealth = 1000;
 
     private bool shooting = false;
-    public float shootInterval = 0.05f;
+    private bool canShoot = true;
+    public float shootInterval = 10f;
     private float shootCooldown;
+    public float damage = 2;
 
     private Vector2 moveDirection;
     private Vector2 mousePosition;
@@ -24,6 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody2D>();
         shootCooldown = 0f;
+        scoreTracker = GameObject.FindObjectOfType<ScoreTracker>();
     }
 
     // Update is called once per frame
@@ -35,6 +42,12 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Move();
+        FixHealth();
+
+        if (currentHealth < 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
     void ProcessInputs()
@@ -50,16 +63,13 @@ public class PlayerController : MonoBehaviour
         }
         
 
-        if (shooting && shootCooldown <= 0)
+        if (Input.GetMouseButton(0) && shootCooldown <= 0 && canShoot)
         {
-            weapon.Fire();
-            shootCooldown = shootInterval;
+            StartCoroutine(Shoot());
+            //shootCooldown = shootInterval;
             
         }
-        if (shootCooldown > 0)
-        {
-            shootCooldown -= Time.deltaTime;
-        }
+       
 
 
         
@@ -68,12 +78,12 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Shoot() 
     { 
-        //canShoot = false;
+        canShoot = false;
 
         weapon.Fire();
 
         yield return new WaitForSeconds(shootInterval);
-        //canShoot = true;
+        canShoot = true;
     }
 
     void Move()
@@ -85,4 +95,17 @@ public class PlayerController : MonoBehaviour
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
         playerRb.rotation = aimAngle;
     }
+    void FixHealth()
+    {
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+    }
+
+    void GameOver()
+    {
+
+    }
+
 }
